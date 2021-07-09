@@ -23,9 +23,9 @@ jobs:
 
     - name: npm install, build, and test
       run: |
-        npm install
-        npm run build --if-present
-        npm run test --if-present
+        npm install -g @angular/cli
+        ng build Playground
+        ng test
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
@@ -52,5 +52,5 @@ jobs:
       with:
         app-name: 'PlaygroundWebTest'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_753c1ac1ed004b99b1921c879ba6e87f }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_753c1ac1ed004b99b1921c879ba6e87f }} #DevSkim: ignore DS117838 
         package: .
